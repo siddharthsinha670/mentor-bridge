@@ -1,145 +1,11 @@
-<think>
-The user wants a website layout based on the list of sections they provided.
-The sections are:
-1. Top Bar
-2. Header
-3. Hero Section
-4. Trust Indicators
-5. About Section
-6. Services Section
-7. How It Works
-8. Features Section
-9. Teacher Showcase
-10. Programs Section
-11. Statistics Section
-12. Testimonials
-13. Success Stories
-14. FAQ Section
-15. CTA Section
-16. Blog Section
-17. Contact Section
-18. Newsletter Section
-19. Footer
-
-This looks like an educational platform (likely an online learning center or academy) given sections like "Teacher Showcase", "Programs Section", and "How It Works". "Trust Indicators" often appears in educational or service-based sites.
-
-I need to provide HTML and CSS to create this layout. I will structure it using semantic HTML5 tags (header, nav, section, footer, etc.) and provide a basic styling to make it look like a coherent landing page.
-
-**Plan:**
-1.  Create a responsive HTML structure.
-2.  Add basic CSS to style the layout.
-3.  Use placeholders (Lorem Ipsum or generic text) for content.
-4.  Organize the code clearly so the user can copy-paste it.
-
-**Code Structure:**
--   `nav`: Top Bar and Main Header/navigation.
--   `header`: Hero Section.
--   `section` tags for the content flow from Trust Indicators down to CTA.
--   `footer`: Newsletter and Footer info.
-
-Since the user asked for "this layout", I will produce a single HTML file containing the CSS within `<style>` tags for ease of use.
-
-**Specific Details:**
-*   **Top Bar:** Small strip at the top, phone number/email/socials.
-*   **Header:** Logo and Navigation links.
-*   **Hero:** Headline, subheadline, "Enroll Now" button, background image placeholder.
-*   **Trust Indicators:** Logos of partners/featured in.
-*   **About:** Text and image.
-*   **Services:** Grid of cards.
-*   **How It Works:** Steps (1, 2, 3).
-*   **Features:** Icon list or grid.
-*   **Teacher Showcase:** Profile cards (images, names, subjects).
-*   **Programs:** Course cards.
-*   **Statistics:** Counter section (Students, Courses, Teachers).
-*   **Testimonials:** Slider or grid of quotes.
-*   **Success Stories:** Case studies or alumni quotes.
-*   **FAQ:** Accordion or list.
-*   **CTA:** Big banner "Ready to start?".
-*   **Blog:** Recent posts grid.
-*   **Contact:** Form and address info.
-*   **Newsletter:** Email input form.
-*   **Footer:** Links, copyright, social media.
-
-I will use modern CSS (Flexbox/Grid) to ensure it looks decent even without external libraries like Bootstrap, though I'll keep the styling simple (no complex JS required).
-
-**Refining the Output:**
-The user provided a specific order. I will stick to that exact order.
-
-Let's write the code.
-
-*HTML Skeleton:*
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-... styles ...
-</head>
-<body>
-  <div class="top-bar">...</div>
-  <header class="main-header">...</header>
-  <section class="hero">...</section>
-  <section class="trust-indicators">...</section>
-  <section class="about">...</section>
-  ...and so on...
-  <footer>...</footer>
-</body>
-</html>
-```
-
-*CSS:*
-I'll assign colors (probably a blue/white/accent color scheme suitable for education).
-I will add comments to separate sections.
-
-*Self-Correction/Optimization during drafting:*
-- "Programs" and "Services" might be similar. I'll make Programs look like course cards and Services like feature boxes.
-- "Statistics" needs a background color to stand out.
-- "Trust Indicators" is usually a row of logos. I'll use placeholders like [Logo 1], [Logo 2].
-
-The user asked in Urdu/Hindi mixed ("website ka bas ye layout taiyaar kro tto" - "just prepare this layout"). I will provide the code in English as it's standard for web development, but acknowledge the request.
-
-I will provide a single HTML file that can be saved as index.html.
-
-Let's build it.
-
-**Section Mapping:**
-1. **Top Bar:** Flex container, small font.
-2. **Header:** Sticky nav bar.
-3. **Hero:** Centered text, big button.
-4. **Trust:** Flex row, grayscale logos.
-5. **About:** Split layout (Text left, Image right).
-6. **Services:** 3-column grid.
-7. **How It Works:** Step cards with numbers.
-8. **Features:** List or grid.
-9. **Teacher Showcase:** Circular avatars + names.
-10. **Programs:** Cards with "Enroll" buttons.
-11. **Statistics:** Dark background, bold numbers.
-12. **Testimonials:** Blockquotes.
-13. **Success Stories:** Similar to testimonials but focusing on outcome.
-14. **FAQ:** Simple list styling.
-15. **CTA:** Full-width banner.
-16. **Blog:** Grid of article cards.
-17. **Contact:** Form + Map/Info.
-18. **Newsletter:** Input field + Subscribe button.
-19. **Footer:** Columns for links.
-
-I'll ensure the CSS makes it responsive (media queries).
-
-Let's generate the response.
-</think>
-
-Yeh layein aapke liye taiyaar hai. Main ne iss list ko ek simple aur clean HTML structure mein convert kar diya hai jisme main sections (Hero, About, Services, etc.) ek ke baad ek arranged hain.
-
-Aap is code ko copy karke ek file (jaise `index.html`) mein save karein aur browser mein open karein.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educational Platform Layout</title>
+    <title>MyAcademy - Educational Platform</title>
     <style>
-        /* Basic Reset & Colors */
+        /* Basic Styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -159,419 +25,243 @@ Aap is code ko copy karke ek file (jaise `index.html`) mein save karein aur brow
             padding: 0 15px;
         }
 
-        h1, h2, h3 {
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background-color: #3498db;
-            color: white;
+        a {
             text-decoration: none;
-            border-radius: 5px;
-            transition: 0.3s;
+            color: inherit;
         }
 
-        .btn:hover {
-            background-color: #2980b9;
+        ul {
+            list-style: none;
         }
 
-        .section-padding {
-            padding: 60px 0;
-        }
-
-        /* 1. Top Bar */
-        .top-bar {
-            background-color: #f4f4f4;
-            font-size: 14px;
-            padding: 5px 0;
-        }
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        /* 2. Header (Navigation) */
+        /* HEADER STYLES */
         header.main-header {
             background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
+
         header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 70px;
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #3498db;
-        }
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        nav ul li {
-            margin-left: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
+            height: 80px;
+            padding: 0 15px;
         }
 
-        /* 3. Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://source.unsplash.com/random/1600x900/?classroom') no-repeat center center/cover;
-            height: 80vh;
+        /* Left Side: Logo + Company Name */
+        .header-left {
             display: flex;
             align-items: center;
-            text-align: center;
-            color: white;
-        }
-        .hero h1 { color: white; font-size: 3rem; }
-        .hero p { font-size: 1.2rem; margin-bottom: 20px; }
-
-        /* 4. Trust Indicators */
-        .trust-indicators {
-            background-color: #fff;
-            text-align: center;
-            padding: 30px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .trust-logos {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            opacity: 0.6;
-            flex-wrap: wrap;
-        }
-        .logo-placeholder {
-            width: 100px;
-            height: 40px;
-            background: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            color: #555;
+            gap: 12px;
         }
 
-        /* 5. About Section */
-        .about {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .about-text, .about-img {
-            flex: 1;
-            min-width: 300px;
-        }
-        .about-img img {
-            width: 100%;
-            border-radius: 10px;
-        }
-
-        /* 6. Services Section */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .service-card {
-            background: #f9f9f9;
-            padding: 30px;
-            text-align: center;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        /* 7. How It Works */
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .step-card {
-            flex: 1;
-            text-align: center;
-            min-width: 200px;
-        }
-        .step-number {
+        .logo-img {
             width: 50px;
             height: 50px;
-            background: #3498db;
-            color: white;
-            border-radius: 50%;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            margin: 0 auto 15px;
-        }
-
-        /* 8. Features Section */
-        .features-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .feature-item {
-            flex: 1 1 45%;
-            display: flex;
-            gap: 15px;
-            align-items: flex-start;
-        }
-
-        /* 9. Teacher Showcase */
-        .teachers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-        .teacher-card {
-            text-align: center;
-        }
-        .teacher-img {
-            width: 150px;
-            height: 150px;
-            background: #ddd;
-            border-radius: 50%;
-            margin: 0 auto 15px;
-            object-fit: cover;
-        }
-
-        /* 10. Programs Section */
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .program-card {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .program-img {
-            height: 200px;
-            background: #ccc;
-        }
-        .program-content {
-            padding: 20px;
-        }
-
-        /* 11. Statistics Section */
-        .stats {
-            background-color: #2c3e50;
             color: white;
-            text-align: center;
-        }
-        .stats-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .stat-item h3 {
-            color: #f1c40f;
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-        }
-
-        /* 12. Testimonials & 13. Success Stories */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .review-card {
-            background: #f9f9f9;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-        }
-
-        /* 14. FAQ Section */
-        .faq-item {
-            border-bottom: 1px solid #ddd;
-            padding: 15px 0;
-        }
-        .faq-question {
+            font-size: 24px;
             font-weight: bold;
+        }
+
+        .company-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2c3e50;
+            display: none; /* Hidden on mobile, shown on desktop */
+        }
+
+        @media (min-width: 768px) {
+            .company-name {
+                display: block;
+            }
+        }
+
+        /* Middle Part: Navigation */
+        .header-middle nav ul {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-middle nav ul li a {
+            font-weight: 500;
+            color: #444;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .header-middle nav ul li a:hover {
+            color: #25D366;
+        }
+
+        .header-middle nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #25D366;
+            transition: width 0.3s;
+        }
+
+        .header-middle nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Right Side: Icons + Button */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: 0.3s;
             cursor: pointer;
         }
 
-        /* 15. CTA Section */
-        .cta-section {
-            background: #3498db;
+        .social-icon:hover {
+            background-color: #e0e0e0;
+            transform: scale(1.1);
+        }
+
+        .whatsapp-icon {
+            background-color: #e8f5e9;
+            color: #25D366;
+        }
+
+        .phone-icon {
+            background-color: #e3f2fd;
+            color: #1976D2;
+        }
+
+        .consult-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
             color: white;
-            text-align: center;
-            padding: 50px 0;
-        }
-        .cta-section h2 { color: white; }
-        .cta-section .btn {
-            background: white;
-            color: #3498db;
-        }
-
-        /* 16. Blog Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .blog-post {
-            border: 1px solid #eee;
-            border-radius: 5px;
-        }
-        .blog-img {
-            height: 150px;
-            background: #eee;
-        }
-        .blog-content { padding: 15px; }
-
-        /* 17. Contact Section */
-        .contact-wrapper {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        .contact-form, .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        /* 18. Newsletter Section */
-        .newsletter {
-            background: #f4f4f4;
-            text-align: center;
-            padding: 40px 0;
-        }
-        .newsletter-form {
-            max-width: 500px;
-            margin: 20px auto 0;
-            display: flex;
-            gap: 10px;
-        }
-
-        /* 19. Footer */
-        footer {
-            background: #222;
-            color: #ccc;
-            padding: 40px 0 20px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        .footer-col h4 {
-            color: white;
-            margin-bottom: 20px;
-        }
-        .footer-col ul {
-            list-style: none;
-        }
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-        .footer-col ul li a {
-            color: #ccc;
-            text-decoration: none;
-        }
-        .copyright {
-            text-align: center;
-            border-top: 1px solid #333;
-            padding-top: 20px;
+            border: none;
+            border-radius: 25px;
             font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            white-space: nowrap;
         }
 
-        /* Responsive adjustments */
+        .consult-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(238, 90, 90, 0.3);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .header-right .consult-text {
+                display: none;
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            nav ul { display: none; } /* Simple hide for mobile example */
-            .about, .contact-wrapper { flex-direction: column; }
-            .top-bar { display: none; }
+            .header-middle {
+                display: none; /* Hidden on mobile - would need JS for toggle */
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .company-name {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <span>+92 300 1234567 | info@example.com</span>
-            <span>Follow Us: FB | TW | IN</span>
-        </div>
-    </div>
-
-    <!-- 2. Header -->
+    <!-- HEADER -->
     <header class="main-header">
         <div class="container">
-            <div class="logo">MyAcademy</div>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#programs">Programs</a></li>
-                    <li><a href="#teachers">Teachers</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+            
+            <!-- 1. Left Side: Logo + Company Name -->
+            <div class="header-left">
+                <div class="logo-img">M</div>
+                <span class="company-name">MyBridge</span>
+            </div>
+
+            <!-- 2. Middle Part: Navigation -->
+            <div class="header-middle">
+                <nav>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Find a Tutor</a></li>
+                        <li><a href="#">Become a Tutor</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- 3. Right Side: Icons + Button -->
+            <div class="header-right">
+                <!-- WhatsApp Icon -->
+                <a href="https://wa.me/1234567890" class="social-icon whatsapp-icon" title="Chat on WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.951L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                </a>
+
+                <!-- Call/Phone Icon -->
+                <a href="tel:+923001234567" class="social-icon phone-icon" title="Call Us">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </a>
+
+                <!-- Book Free Consult Button -->
+                <button class="consult-btn">
+                    Book Free Consult
+                </button>
+                
+                <!-- Mobile Menu Toggle -->
+                <div class="menu-toggle">☰</div>
+            </div>
+
         </div>
     </header>
 
-    <!-- 3. Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Unlock Your Potential</h1>
-            <p>Join the best learning platform to master new skills with expert teachers.</p>
-            <a href="#programs" class="btn">View Programs</a>
-        </div>
-    </section>
-
-    <!-- 4. Trust Indicators -->
-    <section class="trust-indicators">
-        <div class="container">
-            <p>Trusted by leading organizations</p>
-            <div class="trust-logos">
-                <div class="logo-placeholder">Partner 1</div>
-                <div class="logo-placeholder">Partner 2</div>
-                <div class="logo-placeholder">Partner 3</div>
-                <div class="logo-placeholder">Partner 4</div>
+    <!-- Hero Section (Demo) -->
+    <section class="hero" style="height: 500px; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200') center/cover;">
+        <div class="container" style="display: flex; align-items: center; justify-content: center; height: 100%;">
+            <div style="text-align: center; color: white;">
+                <h1 style="font-size: 3rem; margin-bottom: 20px;">Welcome to MyBridge</h1>
+                <p style="font-size: 1.2rem;">Find the best tutors for your bright future</p>
             </div>
         </div>
     </section>
 
-    <!-- 5. About Section -->
-    <section id="about" class="section-padding">
-        <div class="container">
-            <div class="about">
-                <div class="about-text">
-                    <h2>Who We Are</h2>
-                    <p>We are a leading educational institution dedicated to providing high-quality learning resources. Our mission is to make education accessible to everyone.</
+</body>
+</html>
