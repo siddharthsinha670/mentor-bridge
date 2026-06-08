@@ -3,403 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentor Bridge - Educational Platform</title>
+    <title>Mentor Bridge - Find Best Mentors</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { line-height: 1.6; color: #333; background: #f5f7fa; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        button { border: none; cursor: pointer; }
+        button { border: none; cursor: pointer; font-family: inherit; }
 
-        /* ===== HEADER STYLES ===== */
-        header.main-header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+        /* HEADER */
+        header { background: #fff; box-shadow: 0 2px 15px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 1000; }
+        header .container { display: flex; justify-content: space-between; align-items: center; height: 75px; }
 
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-            padding: 0 15px;
-        }
+        .header-left { display: flex; align-items: center; gap: 10px; }
+        .logo { width: 45px; height: 45px; background: linear-gradient(135deg, #00c853, #009624); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; font-weight: bold; }
+        .company-name { font-size: 20px; font-weight: 700; color: #1a1a2e; }
 
-        /* LEFT SIDE: Logo + Company Name */
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .header-middle ul { display: flex; gap: 25px; }
+        .header-middle ul li a { font-weight: 500; color: #444; font-size: 15px; transition: 0.3s; }
+        .header-middle ul li a:hover { color: #00c853; }
 
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
+        .header-right { display: flex; gap: 10px; position: relative; }
+        .btn { padding: 10px 20px; border-radius: 25px; font-size: 14px; font-weight: 600; transition: 0.3s; position: relative; }
+        .btn-red { background: linear-gradient(135deg, #ff5252, #d32f2f); color: white; }
+        .btn-green { background: linear-gradient(135deg, #00c853, #009624); color: white; }
+        .btn-outline { background: transparent; border: 2px solid #00c853; color: #00c853; }
+        .btn-outline:hover { background: #00c853; color: white; }
+        .btn:hover { transform: translateY(-2px); }
 
-        .company-name {
-            font-size: 22px;
-            font-weight: 700;
-            color: #2c3e50;
-        }
+        .dropdown { position: absolute; top: 100%; right: 0; background: white; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,0.15); min-width: 180px; display: none; z-index: 100; }
+        .dropdown.show { display: block; }
+        .dropdown button { width: 100%; padding: 12px 20px; text-align: left; background: white; color: #333; border-radius: 0; }
+        .dropdown button:hover { background: #f5f5f5; transform: none; box-shadow: none; }
 
-        @media (max-width: 480px) {
-            .company-name { display: none; }
-        }
+        /* MODALS */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 9999; }
+        .modal-overlay.show { display: flex; }
+        .modal { background: white; width: 95%; max-width: 500px; max-height: 90vh; overflow-y: auto; border-radius: 15px; }
+        .modal-header { background: linear-gradient(135deg, #00c853, #009624); color: white; padding: 20px 25px; display: flex; justify-content: space-between; align-items: center; }
+        .modal-header h3 { margin: 0; font-size: 18px; }
+        .modal-close { background: rgba(255,255,255,0.2); border: none; color: white; width: 30px; height: 30px; border-radius: 50%; font-size: 18px; }
+        .modal-body { padding: 25px; }
 
-        /* MIDDLE PART: Navigation */
-        .header-middle nav ul {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
+        .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px; }
+        .role-card { padding: 20px 10px; border: 2px solid #eee; border-radius: 12px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .role-card:hover { border-color: #00c853; }
+        .role-card.selected { border-color: #00c853; background: #e8f5e9; }
+        .role-icon { font-size: 35px; margin-bottom: 10px; }
+        .role-card h4 { font-size: 14px; margin-bottom: 5px; }
+        .role-card p { font-size: 11px; color: #666; margin: 0; }
 
-        .header-middle nav ul li a {
-            font-weight: 500;
-            color: #444;
-            font-size: 15px;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .header-middle nav ul li a:hover {
-            color: #25D366;
-        }
-
-        .header-middle nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #25D366;
-            transition: width 0.3s;
-        }
-
-        .header-middle nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        @media (max-width: 991px) {
-            .header-middle { display: none; }
-        }
-
-        /* RIGHT SIDE: Buttons Only */
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* BUTTON STYLES */
-        .btn {
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-
-        .consult-btn {
-            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
-            color: white;
-        }
-        .consult-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(238, 90, 90, 0.3);
-        }
-
-        .signin-btn {
-            background: transparent;
-            color: #333;
-            border: 2px solid #25D366;
-        }
-        .signin-btn:hover {
-            background: #25D366;
-            color: white;
-        }
-
-        .signup-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-        }
-        .signup-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        @media (max-width: 576px) {
-            .header-right .btn span { display: none; }
-            .btn { padding: 8px 14px; }
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-        }
-
-        @media (max-width: 991px) {
-            .menu-toggle { display: block; }
-        }
-
-        /* ===== LOGIN MODAL ===== */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .modal-overlay.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        .login-modal {
-            background: white;
-            width: 90%;
-            max-width: 400px;
-            border-radius: 15px;
-            overflow: hidden;
-            transform: scale(0.8);
-            transition: transform 0.3s;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .modal-overlay.active .login-modal {
-            transform: scale(1);
-        }
-
-        .modal-header {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 25px;
-            text-align: center;
-            position: relative;
-        }
-
-        .modal-header h2 { font-size: 24px; margin-bottom: 5px; }
-        .modal-header p { font-size: 14px; opacity: 0.9; }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        .modal-body { padding: 30px; }
-
-        .form-group { margin-bottom: 20px; }
+        .form-group { margin-bottom: 18px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 14px; }
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-        .form-group input:focus {
-            outline: none;
-            border-color: #25D366;
-            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
-        }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+        .form-group input:focus { outline: none; border-color: #00c853; }
+        .submit-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, #00c853, #009624); color: white; border: none; border-radius: 8px; font-size: 15px; font-weight: 600; }
 
-        .form-options {
-            display: flex;
-            justify-content: space-between;
-            font-size: 13px;
-            margin-bottom: 20px;
-        }
+        /* STEPS */
+        .steps-indicator { display: flex; justify-content: center; margin-bottom: 30px; gap: 10px; }
+        .step-item { display: flex; align-items: center; }
+        .step-num { width: 32px; height: 32px; border-radius: 50%; background: #ddd; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
+        .step-item.active .step-num { background: #00c853; }
+        .step-line { width: 40px; height: 2px; background: #ddd; }
+        .step-item.active + .step-line { background: #00c853; }
+        .step-content { display: none; }
+        .step-content.active { display: block; }
 
-        .remember-me { display: flex; align-items: center; gap: 5px; }
-        .remember-me input { width: auto; }
-        .forgot-password { color: #25D366; }
+        .checkbox-group label { display: flex; align-items: center; gap: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 8px; cursor: pointer; }
+        .checkbox-group input { width: auto; }
+        .form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
 
-        .login-submit-btn {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .signup-link {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        .signup-link a { color: #25D366; font-weight: 600; }
-
-        /* Demo Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200') center/cover;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        /* HERO */
+        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600') center/cover; height: 90vh; display: flex; align-items: center; justify-content: center; }
         .hero-content { text-align: center; color: white; }
-        .hero-content h1 { font-size: 3rem; margin-bottom: 15px; }
-        .hero-content p { font-size: 1.2rem; }
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        .hero-content p { font-size: 1.3rem; margin-bottom: 30px; opacity: 0.9; }
+        .hero-btns { display: flex; gap: 15px; justify-content: center; }
+
+        /* FOOTER */
+        footer { background: #1a1a2e; color: white; padding: 50px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .footer-col h4 { color: #00c853; margin-bottom: 20px; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: #aaa; font-size: 14px; }
+        .footer-col ul li a:hover { color: #00c853; }
+        .copyright { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; color: #666; font-size: 13px; }
+
+        /* ABOUT */
+        .about-content { padding: 40px 0; }
+        .about-content h2 { font-size: 2rem; margin-bottom: 20px; }
+        .about-content p { font-size: 16px; line-height: 1.8; color: #555; }
+
+        /* QUERY */
+        .query-box textarea { min-height: 150px; }
+
+        /* DEMO CLASS STEPS */
+        .demo-steps-list { background: #f5f5f5; padding: 20px; border-radius: 10px; }
+        .demo-step-item { display: flex; align-items: center; gap: 15px; padding: 12px 0; border-bottom: 1px solid #eee; }
+        .demo-step-item:last-child { border-bottom: none; }
+        .demo-step-num { width: 30px; height: 30px; border-radius: 50%; background: #00c853; color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; }
+
+        @media (max-width: 768px) {
+            .header-middle { display: none; }
+            .role-grid { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2rem; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
     </style>
 </head>
 <body>
 
     <!-- ===== HEADER ===== -->
-    <header class="main-header">
+    <header>
         <div class="container">
-            
-            <!-- LEFT: Logo + Company Name -->
             <div class="header-left">
-                <div class="logo-img">M</div>
+                <div class="logo">M</div>
                 <span class="company-name">Mentor Bridge</span>
             </div>
 
-            <!-- MIDDLE: Navigation with Contact Us -->
             <div class="header-middle">
-                <nav>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Find a Tutor</a></li>
-                        <li><a href="#">Become a Tutor</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </nav>
+                <ul>
+                    <li><a href="#home" onclick="goHome()">Home</a></li>
+                    <li><a href="#find-tutor" onclick="openFindTutor()">Find a Tutor</a></li>
+                    <li><a href="#become-tutor" onclick="openBecomeTutor()">Become a Tutor</a></li>
+                    <li><a href="#about" onclick="openAboutModal()">About Us</a></li>
+                    <li><a href="#contact" onclick="openContactModal()">Contact Us</a></li>
+                </ul>
             </div>
 
-            <!-- RIGHT: BUTTONS ONLY (Icons Removed) -->
             <div class="header-right">
-                <!-- Book Free Consult -->
-                <button class="btn consult-btn">
-                    <span>Book Free Consult</span>
-                </button>
+                <button class="btn btn-red" onclick="toggleDropdown('consult-dropdown')">Book Free Consult ▼</button>
+                <div class="dropdown" id="consult-dropdown">
+                    <button onclick="openQueryModal()">📝 Query</button>
+                    <button onclick="openDemoClassModal()">🎯 Demo Class</button>
+                </div>
 
-                <!-- Sign In -->
-                <button class="btn signin-btn" onclick="openLoginModal()">
-                    <span>Sign In</span>
-                </button>
-
-                <!-- Sign Up -->
-                <button class="btn signup-btn">
-                    <span>Sign Up</span>
-                </button>
-
-                <!-- Mobile Menu -->
-                <div class="menu-toggle">☰</div>
+                <button class="btn btn-outline" onclick="openSignInModal()">Sign In</button>
+                <button class="btn btn-green" onclick="openSignUpModal()">Sign Up</button>
             </div>
-
         </div>
     </header>
 
-    <!-- ===== LOGIN MODAL ===== -->
-    <div class="modal-overlay" id="loginModal">
-        <div class="login-modal">
+    <!-- ===== SIGN IN MODAL ===== -->
+    <div class="modal-overlay" id="signInModal">
+        <div class="modal">
             <div class="modal-header">
-                <h2>Welcome Back!</h2>
-                <p>Sign in to continue</p>
-                <button class="close-modal" onclick="closeLoginModal()">✕</button>
+                <h3>Sign In - Select Role</h3>
+                <button class="modal-close" onclick="closeModal('signInModal')">✕</button>
             </div>
             <div class="modal-body">
-                <form>
+                <p style="margin-bottom: 15px; color: #666;">Select your role to sign in:</p>
+                <div class="role-grid">
+                    <div class="role-card" onclick="selectRole('admin', 'signIn')">
+                        <div class="role-icon">⚙️</div>
+                        <h4>Admin</h4>
+                        <p>Manage platform</p>
+                    </div>
+                    <div class="role-card" onclick="selectRole('teacher', 'signIn')">
+                        <div class="role-icon">👨‍🏫</div>
+                        <h4>Teacher</h4>
+                        <p>Teach students</p>
+                    </div>
+                    <div class="role-card" onclick="selectRole('parent', 'signIn')">
+                        <div class="role-icon">👨‍👩‍👧</div>
+                        <h4>Parent</h4>
+                        <p>Find tutor</p>
+                    </div>
+                </div>
+                <div id="loginForm1" style="display:none;">
                     <div class="form-group">
-                        <label>Email or Phone</label>
-                        <input type="text" placeholder="Enter your email or phone" required>
+                        <label>Email / Phone</label>
+                        <input type="text" placeholder="Enter email or phone">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" placeholder="Enter your password" required>
+                        <input type="password" placeholder="Enter password">
                     </div>
-                    <div class="form-options">
-                        <div class="remember-me">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">Remember me</label>
-                        </div>
-                        <a href="#" class="forgot-password">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="login-submit-btn">Sign In</button>
-                    <div class="signup-link">
-                        Don't have an account? <a href="#">Sign Up</a>
-                    </div>
-                </form>
+                    <button class="submit-btn" onclick="doLogin()">Sign In</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Demo Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Welcome to Mentor Bridge</h1>
-            <p>Find the best mentors for your bright future</p>
+    <!-- ===== SIGN UP MODAL ===== -->
+    <div class="modal-overlay" id="signUpModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Sign Up - Select Role</h3>
+                <button class="modal-close" onclick="closeModal('signUpModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 15px; color: #666;">Select your role to sign up:</p>
+                <div class="role-grid">
+                    <div class="role-card" onclick="selectRole('admin', 'signUp')">
+                        <div class="role-icon">⚙️</div>
+                        <h4>Admin</h4>
+                    </div>
+                    <div class="role-card" onclick="selectRole('teacher', 'signUp')">
+                        <div class="role-icon">👨‍🏫</div>
+                        <h4>Teacher</h4>
+                    </div>
+                    <div class="role-card" onclick="selectRole('parent', 'signUp')">
+                        <div class="role-icon">👨‍👩‍👧</div>
+                        <h4>Parent</h4>
+                    </div>
+                </div>
+                <div id="signupForm1" style="display:none;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" placeholder="First name">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" placeholder="Last name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="Enter phone">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="Create password">
+                    </div>
+                    <button class="submit-btn" onclick="doSignUp()">Create Account</button>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <script>
-        function openLoginModal() {
-            document.getElementById('loginModal').classList.add('active');
-        }
+    <!-- ===== QUERY MODAL ===== -->
+    <div class="modal-overlay" id="queryModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Submit Your Query</h3>
+                <button class="modal-close" onclick="closeModal('queryModal')">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="Enter phone number">
+                </div>
+                <div class="form-group query-box">
+                    <label>Your Query</label>
+                    <textarea placeholder="Describe your query..."></textarea>
+                </div>
+                <button class="submit-btn" onclick="submitQuery()">Submit Query</button>
+            </div>
+        </div>
+    </div>
 
-        function closeLoginModal() {
-            document.getElementById('loginModal').classList.remove('active');
-        }
-
-        document.getElementById('loginModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLoginModal();
-            }
-        });
-    </script>
-</body>
-</html>
+    <!-- ===== DEMO CLASS MODAL ===== -->
+    <div class="modal-overlay" id="demoClassModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Book Demo Class
